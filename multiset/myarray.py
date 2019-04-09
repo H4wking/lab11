@@ -1,13 +1,16 @@
+from ctypes import *
+
+
 class MyArray:
     def __init__(self, size):
         """
         Produces a newly constructed empty array.
         :param size: size of array.
         """
-        self._items = []
+        self._items = c_int * size
         self._size = size
-        for i in range(size):
-            self._items.append(None)
+        # for i in range(size):
+        #     self._items.append(None)
 
     def __str__(self):
         """
