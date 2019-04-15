@@ -17,11 +17,11 @@ class LifeGrid:
 
     # Returns the number of rows in the grid.
     def numRows(self):
-        pass
+        return self._grid.num_rows()
 
     # Returns the number of columns in the grid.
     def numCols(self):
-        pass
+        return self._grid.num_cols()
 
     # Configures the grid to contain the given live cells.
     def configure(self, coordList):
@@ -40,12 +40,54 @@ class LifeGrid:
 
     # Clears the indicated cell by setting it to dead.
     def clearCell(self, row, col):
-        pass
+        self._grid[row, col] = LifeGrid.DEAD_CELL
 
     # Sets the indicated cell to be alive.
     def setCell(self, row, col):
-        pass
+        self._grid[row, col] = LifeGrid.LIVE_CELL
 
     # Returns the number of live neighbors for the given cell.
-    def eNeighbnumLivors(self, row, col):
-        pass
+    def numLiveNeighbors(self, row, col):
+        count = 0
+        try:
+            if self.isLiveCell(row-1, col):
+                count += 1
+        except AssertionError:
+            pass
+        try:
+            if self.isLiveCell(row+1, col):
+                count += 1
+        except AssertionError:
+            pass
+        try:
+            if self.isLiveCell(row, col-1):
+                count += 1
+        except AssertionError:
+            pass
+        try:
+            if self.isLiveCell(row, col+1):
+                count += 1
+        except AssertionError:
+            pass
+        try:
+            if self.isLiveCell(row-1, col-1):
+                count += 1
+        except AssertionError:
+            pass
+        try:
+            if self.isLiveCell(row-1, col+1):
+                count += 1
+        except AssertionError:
+            pass
+        try:
+            if self.isLiveCell(row+1, col-1):
+                count += 1
+        except AssertionError:
+            pass
+        try:
+            if self.isLiveCell(row+1, col+1):
+                count += 1
+        except AssertionError:
+            pass
+        return count
+

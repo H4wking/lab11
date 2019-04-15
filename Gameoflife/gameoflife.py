@@ -5,11 +5,11 @@ from life import LifeGrid
 INIT_CONFIG = [ (1,1), (1,2), (2,2), (3,2) ]
 
 # Set the size of the grid.
-GRID_WIDTH = 5
-GRID_HEIGHT = 5
+GRID_WIDTH = int(input("Enter width: "))
+GRID_HEIGHT = int(input("Enter height: "))
 
 # Indicate the number of generations.
-NUM_GENS = 8
+NUM_GENS = int(input("Enter number of generations: "))
 
 def main():
     # Construct the game grid and configure it.
@@ -44,7 +44,16 @@ def evolve( grid ):
 
  # Prints a text -based representation of the game grid.
 def draw( grid ):
-    pass
+    grid_str = ""
+    for i in range(grid.numRows()):
+        for j in range(grid.numCols()):
+            if grid.isLiveCell(i, j):
+                grid_str += "■"
+            else:
+                grid_str += "_"
+        grid_str += "\n"
+    print(grid_str)
+
 
 # Executes the main routine.
 main()

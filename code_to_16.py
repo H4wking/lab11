@@ -31,6 +31,6 @@ class Encoder:
 
 
 if __name__ == "__main__":
-    mes = Encoder().convert("ABA")
+    mes = Encoder().convert("ABC")
     for i in range(len(mes)):
         print(mes[i])
